@@ -111,12 +111,14 @@ class PlaceRemoteDataSource private constructor(
         val categoryName = category.name.lowercase()
         val latLongString = "${latLng.lat},${latLng.lng}"
 
-        placeApi.searchPlaceTripadvisor(
+        val a = placeApi.searchPlaceTripadvisor(
             TRIP_ADVISOR_API_KEY,
             keyword,
             categoryName,
             latLong = latLongString
-        ).enqueue(
+        )
+
+        a.enqueue(
             PlaceSearchResponse::class.java,
             object : Callback<PlaceSearchResponse> {
                 override fun onResponse(

@@ -61,6 +61,8 @@ interface PlaceSource {
 
         fun markNotFavorite(placeId: String, listener: ResultListener<Boolean>)
 
+        fun getFavoriteState(placeId: String): Int
+
         fun getFavoritePlace(listener: ResultListener<List<Place>>)
 
         fun getRecentSearchPlaces(listener: ResultListener<List<String>>)

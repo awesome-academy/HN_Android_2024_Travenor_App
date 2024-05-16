@@ -76,8 +76,6 @@ class DetailActivity : BaseActivity(), DetailContract.View, FavoritePlaceObserve
         val bottomBehavior = BottomSheetBehavior.from(mBinding.containerBottomSheet)
         bottomBehavior.peekHeight =
             ((Resources.getSystem().displayMetrics.heightPixels) * SIXTEEN_PERCENT).toInt()
-        bottomBehavior.maxHeight =
-            ((Resources.getSystem().displayMetrics.heightPixels) * EIGHTY_PERCENT).toInt()
         bottomBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
@@ -149,7 +147,6 @@ class DetailActivity : BaseActivity(), DetailContract.View, FavoritePlaceObserve
 
     companion object {
         const val KEY_INTENT_PLACE_ID = "activity.detail.key.intent_place_id"
-        private const val EIGHTY_PERCENT = 0.8
         private const val SIXTEEN_PERCENT = 0.6
     }
 

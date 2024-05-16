@@ -90,7 +90,7 @@ class PlaceDAO private constructor(context: Context) {
         return result
     }
 
-    private fun isFavoritePlace(locationId: String): Int {
+    fun isFavoritePlace(locationId: String): Int {
         val db = sqlHelper.readableDatabase
         val columns = arrayOf(PlaceTable.COL_IS_FAVORITE)
         val selectionString = "${PlaceTable.COL_LOCATION_ID} =? "

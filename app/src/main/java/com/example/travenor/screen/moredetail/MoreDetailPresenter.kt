@@ -90,13 +90,10 @@ class MoreDetailPresenter internal constructor(
             object : ResultListener<List<Place>> {
                 override fun onSuccess(data: List<Place>?) {
                     if (!data.isNullOrEmpty()) {
-                        val idList = mutableListOf<String>()
                         for (place in data) {
                             getNearbyPlacePhoto(place.locationId, PlaceCategory.RESTAURANTS)
-
-                            // Get detail for each place
-                            idList.add(place.locationId)
                         }
+                        mView?.onGetNearbyRestaurantSuccess(data)
                     }
                 }
 
@@ -114,13 +111,10 @@ class MoreDetailPresenter internal constructor(
             object : ResultListener<List<Place>> {
                 override fun onSuccess(data: List<Place>?) {
                     if (!data.isNullOrEmpty()) {
-                        val idList = mutableListOf<String>()
                         for (place in data) {
                             getNearbyPlacePhoto(place.locationId, PlaceCategory.HOTELS)
-
-                            // Get detail for each place
-                            idList.add(place.locationId)
                         }
+                        mView?.onGetNearbyHotelSuccess(data)
                     }
                 }
 

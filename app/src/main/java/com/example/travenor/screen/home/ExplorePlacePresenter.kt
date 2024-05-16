@@ -161,7 +161,6 @@ class ExplorePlacePresenter internal constructor(
                         data.forEach {
                             locationIdList.add(it.locationId)
                         }
-
                         mView?.onGetExplorePlaceSuccess(data, PlaceCategory.HOTELS)
 
                         // Get thumbnail for each place with locationId

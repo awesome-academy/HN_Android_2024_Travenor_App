@@ -122,6 +122,8 @@ class PlaceRepositoryImpl private constructor(
                             }
                         }
                     } else {
+                        val favoriteState = local.getFavoriteState(placeId)
+                        data.isFavorite = favoriteState
                         listener.onSuccess(data)
                         local.savePlaceDetail(data)
                     }
@@ -225,11 +227,27 @@ class PlaceRepositoryImpl private constructor(
 
                     // Save to local DB
                     localExplore.saveExploreAttractionLocal(data.map { it.locationId })
+                    when (category) {
+                        PlaceCategory.ATTRACTIONS -> {
+                            localExplore.saveExploreAttractionLocal(data.map { it.locationId })
+                        }
+
+                        PlaceCategory.HOTELS -> {
+                            localExplore.saveExploreHotelLocal(data.map { it.locationId })
+                        }
+
+                        PlaceCategory.RESTAURANTS -> {
+                            localExplore.saveExploreRestaurantLocal(data.map { it.locationId })
+                        }
+                    }
+
                     data.forEach {
                         it.locationType = category.name.lowercase()
                         local.savePlaceDetail(it)
                         local.savePlaceAddress(it)
                     }
+
+                    listener.onSuccess(data)
                 }
 
                 override fun onError(exception: Exception?) {

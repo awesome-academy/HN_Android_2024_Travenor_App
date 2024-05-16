@@ -58,6 +58,8 @@ class Deps {
 
 class AppConfigs {
     static final String application_id = "com.example.travenor"
+    static final String app_name = "Travenor"
+    static final String app_name_debug = "Travenor dev"
     static final int compile_sdk_version = 33
     static final int min_sdk_version = 24
     static final int target_sdk_version = 33

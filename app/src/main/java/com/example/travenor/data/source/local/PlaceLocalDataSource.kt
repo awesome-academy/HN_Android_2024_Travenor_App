@@ -2,6 +2,7 @@ package com.example.travenor.data.source.local
 
 import android.content.Context
 import android.database.sqlite.SQLiteException
+import com.example.travenor.constant.IS_NOT_FAVORITE
 import com.example.travenor.constant.PlaceCategory
 import com.example.travenor.core.ResultListener
 import com.example.travenor.data.model.location.LatLng
@@ -107,6 +108,15 @@ class PlaceLocalDataSource(
             listener.onSuccess(result)
         } catch (e: SQLiteException) {
             listener.onError(e)
+        }
+    }
+
+    override fun getFavoriteState(placeId: String): Int {
+        try {
+            return placeDao.isFavoritePlace(placeId)
+        } catch (e: SQLiteException) {
+            e.run { printStackTrace() }
+            return IS_NOT_FAVORITE
         }
     }
 
