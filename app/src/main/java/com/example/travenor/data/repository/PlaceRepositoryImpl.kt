@@ -13,7 +13,7 @@ import com.example.travenor.data.model.place.Place
 import com.example.travenor.data.source.PlaceSource
 
 @Suppress("TooManyFunctions")
-class PlaceRepositoryImpl private constructor(
+class PlaceRepositoryImpl(
     private val remote: PlaceSource.Remote,
     private val local: PlaceSource.Local,
     private val localExplore: PlaceSource.ExplorePlaceLocal
@@ -230,6 +230,7 @@ class PlaceRepositoryImpl private constructor(
                         local.savePlaceDetail(it)
                         local.savePlaceAddress(it)
                     }
+                    listener.onSuccess(data)
                 }
 
                 override fun onError(exception: Exception?) {
@@ -241,6 +242,8 @@ class PlaceRepositoryImpl private constructor(
 
     companion object {
         private const val DATA_FRESHNESS_THRESH_HOLD = 2 * 24 * 60 * 60 * 1000 // 2 days
+
+        @Volatile
         private var instance: PlaceRepositoryImpl? = null
 
         fun getInstance(

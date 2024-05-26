@@ -176,7 +176,7 @@ class ExplorePlacePresenter internal constructor(
         )
     }
 
-    private fun getThumbnail(placeIdList: MutableList<String>, category: PlaceCategory) {
+    fun getThumbnail(placeIdList: MutableList<String>, category: PlaceCategory) {
         placeIdList.forEach {
             placeRepositoryImpl.getPlacePhoto(
                 it,

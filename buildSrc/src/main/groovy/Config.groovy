@@ -21,6 +21,9 @@ class Versions {
     //Play service map
     static final String playServiceLocation = "21.2.0"
     static final String playServiceMap = "18.2.0"
+
+    //Testing
+    static final String mockk = "1.13.11"
 }
 
 class ClassPath {
@@ -41,6 +44,7 @@ class Deps {
     // Testing
     static final String junit = "junit:junit:${Versions.jUnit}"
     static final String androidx_junit = "androidx.test.ext:junit:${Versions.junitVersion}"
+    static final String mockk = "io.mockk:mockk:$Versions.mockk"
 
     //UI
     static final String flexBoxlayout = "com.google.android.flexbox:flexbox:${Versions.flexBoxLayout}"
